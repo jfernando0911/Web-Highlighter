@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body{
+    width: 400px;
+    height: 550px;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    display: block;
+    /* border: 1px solid black; */
+    width: 99%;
+    height: 15%;
+    
+
+}
+
+.menu-container{
+    position: relative;
+    width: 100%;
+    height: 30px;
+    /* border: 2px solid purple; */
+    top: 40%;
+}
+
+.menu-list{
+    
+    display:flex;
+    padding: 0;
+    margin: 0;
+    justify-content: space-around;
+    /* border: 1px solid black; */
+
+}
+
+.menu-list > li{
+   
+    /* border: solid 1px red; */
+    display:flex;
+    justify-content: center;    
+}
+
+.menu-list > li:hover{
+    padding-bottom: 6px;
+    border-bottom: #A65FDB 4px solid;
+}
+
+i{
+    margin-right: 2px;
+    /* border: 1px solid green; */
+    /* font-size: 16px; */
+}
+
+i > svg {
+    color: red;
+}
+
+.content-container{
+    position: relative;
+    display: block;
+    /* border: 2px solid blue; */
+    top: 70px;
+    height: 450px;   /* Aquí nos quedamos, 02/febrero/2019, estamos haciendo la caja más grande.. */
+    padding: 0px;
+    
+}
+
+#section1-add-word-or-prhase{
+    /* border: 1px solid yellow; */
+    width: 80%;
+    height: 450px;
+    margin: 0 auto;
+}
+
+.section1-form-items > label{
+    /* line-height: 2; */
+    display: inline-block;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    margin-bottom: 10px;
+
+}
+
+.section1-form-items > input{
+    padding: 5px;
+    border: 2px solid rgb(106,90,205, 0.5);
+    border-radius: 2px;
+    font-family: 'Roboto', sans-serif;
+    width: 96%;
+    margin-bottom: 20px;
+}
+
+/* Aquí nos quedamos, 04/02/2019. También,recordar preventDefault o enfocar el input cuando estamos en otras páginas */
+.save-button > button{
+    background-color: rgb(100, 65, 164);
+    color: white;
+    border: 1px solid transparent;
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px 0px 10px 0px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.inputEmptyValueSourceLanguage{
+    margin-top: 0;
+    color: red;
+}
+
+.inputEmptyValueTargetLanguage{
+    margin-top: 0;
+    color: red;
+}
+
+/* This is the table- words and all related to it  -------------------------------------------------------------*/
+
+
+#table-words > tbody{
+    background-color:  rgb(100, 65, 164);
+    color: white;
+    /* display: inline-block; */
+    
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+#table-words td:first-child{
+    font-size: 16px;
+    width: 12%;
+}
+
+#table-words td{
+    font-size: 16px;
+    width: 100%;
+}
+
+
+#table-words tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+
+#input-vocabulary{
+    padding: 5px;
+    border: 2px solid rgb(106,90,205, 0.5);
+    border-radius: 2px;
+    font-family: 'Roboto', sans-serif;
+    width: 96%;
+    margin-bottom: 20px;
+}
+
+
+/*-----------------------------------------Section 1 CHECKBOX -------------------------------------------------------------*/
+
+.switchTest{
+    /* background-color: black; */
+    display: block;
+}
+
+    input#checkboxTest.switchTest{
+        /* background-color: black; */
+        background: #c6c6c6;
+        position: relative;
+        width: 40px;
+        height: 20px;
+        -webkit-appearance: none;
+        outline: none;
+        /* border-top-left-radius: 15%;
+        border-bottom-left-radius: 15%; */
+        border-radius: 20px;
+        
+        transition: .5s;
+    }
+
+    input:checked#checkboxTest.switchTest{
+        background: rgba(187, 184, 194, 0.534);
+
+    }
+
+    input#checkboxTest.switchTest::before{
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
+        top: 0;
+        left: 0;
+        background: #A65FDB;
+        transform: scale(1.1);
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+        transition: .5s;
+    }
+
+    input:checked#checkboxTest.switchTest::before{   /* Aquí nos quedamos también, 01/06/2019 ,ver bien el videopara entender el procesomejor  */
+        left: 20px;
+
+    }
+
+
+
+

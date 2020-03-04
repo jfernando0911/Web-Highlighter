@@ -1,0 +1,27 @@
+{
+    "name": "Web Highlighter",
+    "description": "Web higlighter is an extension for chrome that helps you highlight words, phrases or chunks of text. You can add descriptions, translation or any kind of details to the highlights. Everytime you find a word  on the web that you saved in your database it will be highlighted.",
+    "version": "0.0.1",
+    "manifest_version": 2,
+    "content_scripts":[{
+        "matches": ["<all_urls>"],
+        "run_at": "document_idle",
+        "all_frames": true,
+        "css":["highlightStyle.css"],
+        "js": ["mark.es6.min.js","contentScript.js", "functionsContentScript.js"]
+        
+    }] ,
+    "icons":{
+        "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    },
+    "browser_action": {
+        "default_popup": "popup.html",
+        "default_title": "WordCollector"
+      },
+    "permissions": ["contextMenus","storage", "tabs"],
+    "background": {
+        "scripts": ["selection.js"]
+    }
+}

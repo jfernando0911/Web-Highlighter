@@ -22,6 +22,7 @@
       },
     "permissions": ["contextMenus","storage", "tabs"],
     "background": {
-        "scripts": ["selection.js"]
+        "persistent": true,
+        "scripts": ["backgroundFunctions.js","backgroundScript.js"]
     }
 }

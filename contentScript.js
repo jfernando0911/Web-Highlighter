@@ -715,7 +715,7 @@ saveButton.element.addEventListener("click", function(e){
   //   }
 
     chrome.runtime.sendMessage({greeting: true, txtSelection: textAreaElement.element.value.trim(), txtTranslation:textAreaElement2.element.value.trim(), pageUrl: referenceUrl}, function(response) {
-      console.log(response.farewell);
+      
       
   
   

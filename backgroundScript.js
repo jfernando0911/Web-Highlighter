@@ -9,54 +9,11 @@
   let data2 = new Object;
   
   let otroTestArray = new Array();
-  
-
-  function hasDuplicate(arr, arrPop){
-    if( new Set(arr).size !== arr.length){
-      arrPop.pop();
-    }else{
-      return;
-    }
-  }
-
-
-  function isArrayEmpty( arr ){
-    if (typeof arr !== 'undefined' && arr.length > 0) {
-     //La array está definida y tiene por lo menos un elemento dentro...
-      console.log("La array testArra NO está vacía...");
-    }else{
-      console.log("está vacía");
-    } 
+ 
 
 
 
-  }
-
-
-  function isEmptyObject(obj){
-    return JSON.stringify(obj) === '{}';
-  }
-
-
-  function checkDuplicates(tempArr, arr){
-    let checkDuplicatesBool = new Object();
-
-    for(let obj in  arr){                               
-      tempArr.push(arr[obj].selection);
-    }
-
-    if( new Set(tempArr).size !== arr.length){  
-      arr.pop();
-      checkDuplicatesBool.value = true;
-    }else{
-      checkDuplicatesBool.value = false;
-    }
-
-    tempArr = [];   
-
-    return checkDuplicatesBool.value;
-
-  }
+ 
 
 
 
@@ -68,7 +25,7 @@
     
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
       // console.log(tabs[0].id);
-      chrome.tabs.sendMessage(tabs[0].id, {seleccionBool: true, selectionText: info.selectionText, referenceUrl: info.pageUrl, todalaInfo: info},  function(response) {
+      chrome.tabs.sendMessage(tabs[0].id, {seleccionBool: true, selectionText: info.selectionText, referenceUrl: info.pageUrl, todalaInfo: info},  function() {
         
           // console.log(response.farewell);                                         
         
@@ -93,22 +50,21 @@
         //   console.log(request.txtSelection, request.pageUrl);
           
           
-          let popUpId = "bnlgfpgjfhinbjheabmilbmjgponfdan";   
+        //   let popUpId = "bnlgfpgjfhinbjheabmilbmjgponfdan";   
                                                               
-          if(sender.id == popUpId){                           
-            if(request.greeting == "shit"){
-              // console.log(`Lmao! from ${sender.id}`);
-              sendResponse({farewell: "saludos desde el backgroundScript"});
+          // if(sender.id == popUpId){                           
+          //   if(request.greeting == "shit"){
+          //     // console.log(`Lmao! from ${sender.id}`);
+          //     sendResponse({farewell: "saludos desde el backgroundScript"});
               
-              return true;
-            }else if(request.otroMensaje == "holaaaa"){
-              sendResponse({mensajeBackground: "este es otro mensaje desde l background xd"});
-              return true;
-            }
-          }
+          //     return true;
+          //   }else if(request.otroMensaje == "holaaaa"){
+          //     sendResponse({mensajeBackground: "este es otro mensaje desde l background xd"});
+          //     return true;
+          //   }
+          // }
 
-    
-
+          
         if (request.greeting == true){
           
           
@@ -170,10 +126,12 @@
                         
 
           });
-
           
+
+         
         }                                               
           
+       
       });
     
     

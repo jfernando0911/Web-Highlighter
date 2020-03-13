@@ -8,7 +8,7 @@
         "run_at": "document_idle",
         "all_frames": true,
         "css":["highlightStyle.css"],
-        "js": ["mark.es6.min.js","contentScript.js", "functionsContentScript.js"]
+        "js": ["mark.es6.min.js","contentScript.js", "allFunctions.js"]
         
     }] ,
     "icons":{
@@ -23,6 +23,6 @@
     "permissions": ["contextMenus","storage", "tabs"],
     "background": {
         "persistent": true,
-        "scripts": ["backgroundFunctions.js","backgroundScript.js"]
+        "scripts": ["allFunctions.js","backgroundScript.js"]
     }
 }

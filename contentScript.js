@@ -1,270 +1,270 @@
 
-chrome.storage.local.get("testNumber2", function(data){
-   
-  
-  
-  let tempArr=[];
+chrome.storage.local.get("testNumber2", function (data) {
 
-  for(let element of data.testNumber2){
+
+
+  let tempArr = [];
+
+  for (let element of data.testNumber2) {
     // console.log(element.selection);
     tempArr.push(element.selection);
   }
- 
-      
+
+
   let options = {
     // root: document.querySelector("body"),
-     // '-250px -40px -250px -40px'//Aquí nos quedamo, 19/01/2019, se supone q este es el width y height del viewport
+    // '-250px -40px -250px -40px'//Aquí nos quedamo, 19/01/2019, se supone q este es el width y height del viewport
     threshold: 1
-    };
-  
-  
-  let viewPortHighlight = (entries, observer) =>{
-    
-    entries.forEach((entry)=>{
+  };
+
+
+  let viewPortHighlight = (entries, observer) => {
+
+    entries.forEach((entry) => {
 
       let instance = new Mark(entry.target);
-                     
-      if(entry.isIntersecting === true){       
+
+      if (entry.isIntersecting === true) {
         instance.mark(tempArr, {
-        separateWordSearch: false,
-        className: "highlightMark tooltip alreadyIntersecting",
-        accuracy: "exactly",
-        acrossElements: true,
-        diacritics: true,
-        wildcards: "disabled"
-        });
-                    
-      }
-      else{
-        instance.unmark();              
-      }
-                        
-    });
-  
-  }
-  
-  var Interobserver = new IntersectionObserver(viewPortHighlight, options);
-  
-  chrome.storage.onChanged.addListener((changes, namespace)=>{
-    
-    let tempArr=[];
-
-    tempArr.push(changes.testNumber2.newValue[changes.testNumber2.newValue.length-1].selection);
-    
-     
-    let options = {
-      // root: document.querySelector("body"),
-       // '-250px -40px -250px -40px'
-      threshold: 1
-      };
-    
-    
-    let viewPortHighlight = (entries, observer) =>{
-      
-      entries.forEach((entry)=>{
-        
-      let instance = new Mark(entry.target);
-      
-      if(entry.isIntersecting === true){ 
-          instance.mark(tempArr, {
           separateWordSearch: false,
           className: "highlightMark tooltip alreadyIntersecting",
           accuracy: "exactly",
           acrossElements: true,
           diacritics: true,
           wildcards: "disabled"
+        });
+
+      }
+      else {
+        instance.unmark();
+      }
+
+    });
+
+  }
+
+  var Interobserver = new IntersectionObserver(viewPortHighlight, options);
+
+  chrome.storage.onChanged.addListener((changes, namespace) => {
+
+    let tempArr = [];
+
+    tempArr.push(changes.testNumber2.newValue[changes.testNumber2.newValue.length - 1].selection);
+
+
+    let options = {
+      // root: document.querySelector("body"),
+      // '-250px -40px -250px -40px'
+      threshold: 1
+    };
+
+
+    let viewPortHighlight = (entries, observer) => {
+
+      entries.forEach((entry) => {
+
+        let instance = new Mark(entry.target);
+
+        if (entry.isIntersecting === true) {
+          instance.mark(tempArr, {
+            separateWordSearch: false,
+            className: "highlightMark tooltip alreadyIntersecting",
+            accuracy: "exactly",
+            acrossElements: true,
+            diacritics: true,
+            wildcards: "disabled"
           });
-                      
+
         }
-        else{
-          instance.unmark();                
+        else {
+          instance.unmark();
         }
-       
+
       });
-   
+
     }
 
     var Interobserver = new IntersectionObserver(viewPortHighlight, options);
-    
 
 
-    let elementes = ["span","p", "li", "h1", "h2", "h3", "h4", "h5", "h6", "a"];
 
-    for(let e = 0; e < elementes.length; e++){
-              
+    let elementes = ["span", "p", "li", "h1", "h2", "h3", "h4", "h5", "h6", "a"];
+
+    for (let e = 0; e < elementes.length; e++) {
+
       let shito = document.body.getElementsByTagName(elementes[e]);
-       
-    
-      for(let i = 0; i < shito.length; i++){ 
-        Interobserver.observe(shito[i]);
-        }
-        // console.log("Scroll");
-        
-      
-      }  
 
-      
-      
+
+      for (let i = 0; i < shito.length; i++) {
+        Interobserver.observe(shito[i]);
+      }
+      // console.log("Scroll");
+
+
+    }
+
+
+
   });
 
 
   //----------------------------------------------------------------------------------------//
 
-    let isScrolling;
-    let testingVar;
+  let isScrolling;
+  let testingVar;
 
-    let counter = 0;
-    window.addEventListener('scroll', function ( event ) {
-      
-      window.clearTimeout( isScrolling ); 
+  let counter = 0;
+  window.addEventListener('scroll', function (event) {
 
-  
-      if(event){
-        //  console.log(`Evento`, event.eventPhase);
-        
-         for(let i = 0; i <= elementes.length ; i++){
+    window.clearTimeout(isScrolling);
 
-          testingVar = document.body.getElementsByTagName(elementes[i]);
-          
-         
-         }
-         
+
+    if (event) {
+      //  console.log(`Evento`, event.eventPhase);
+
+      for (let i = 0; i <= elementes.length; i++) {
+
+        testingVar = document.body.getElementsByTagName(elementes[i]);
+
+
       }
-        // debugger;
-        
-        counter = counter + 1;
-        if(counter >25){
-         
-          Interobserver.disconnect(); 
-                               
-          counter = 0;
-        }else if( counter < 25){
-          isScrolling = setTimeout(function() {
-        
-            for(let e = 0; e < elementes.length; e++){
-              
-              let shito = document.body.getElementsByTagName(elementes[e]);
-               
-            
-              for(let i = 0; i < shito.length; i++){ 
-                Interobserver.observe(shito[i]);
-              
-                }
-                console.log("Scroll");
-                
-              
-              }  
-              
-              counter = 0;      
-                console.log( 'Scrolling has stopped.' );
-                
-                    
-            }, 1000);
-        }
-        
-        
-        
-          
-      }, false);
-          
+
+    }
+    // debugger;
+
+    counter = counter + 1;
+    if (counter > 25) {
+
+      Interobserver.disconnect();
+
+      counter = 0;
+    } else if (counter < 25) {
+      isScrolling = setTimeout(function () {
+
+        for (let e = 0; e < elementes.length; e++) {
+
+          let shito = document.body.getElementsByTagName(elementes[e]);
 
 
+          for (let i = 0; i < shito.length; i++) {
+            Interobserver.observe(shito[i]);
 
-    
-          
-
-    let elementes = ["span","p", "li", "h1", "h2", "h3", "h4", "h5", "h6", "a"]; 
-    
-    
-    //-----------------------------------------------------------------------------------------------------------------------//
-              
-    let targetNode = document.querySelector("body");
-    let config = { 
-      
-      attributes: false, 
-      childList: true,
-      subtree: true 
-                      
-      };
-    
-    
-    
-    let callback = (mutationsList, observer)=>{
-      
-      
-
-
-      for(let mutation of mutationsList){
-       
-
-        if(mutation.addedNodes){
-          
-          
-
-          observer.disconnect();
-          
-          setTimeout(() => {
-            
-            for(let e = 0; e < elementes.length; e++){
-              
-              let shito = document.body.getElementsByTagName(elementes[e]);
-              
-              for(let i = 0; i < shito.length; i++){   
-              
-                Interobserver.observe(shito[i]); 
-                
-                }
-                            
-              }
-              
-               observer.observe(targetNode, config); 
-
-              
-              }, 500);
-                      
-            }
-                    
           }
-        
-        let selectingHighlightMarks = document.querySelectorAll(".tooltip");
-       
+          console.log("Scroll");
 
-        chrome.storage.local.get((data)=>{
-          
-          addTitleMarks(selectingHighlightMarks, data.testNumber2);
 
-          });
+        }
 
-                           
-      };
-    
-    
-               
-                
-    
-    let observerMutation = new MutationObserver(callback);
-    
-                
-    observerMutation.observe(targetNode, config);  
-                
+        counter = 0;
+        console.log('Scrolling has stopped.');
 
-      
-  });
-      
-  
+
+      }, 1000);
+    }
 
 
 
-var Element = function(nameElement, widthElement, heightElement, backgroundColorElement){
-    this.nameElement = nameElement;
-    this.widthElement = widthElement;
-    this.heightElement = heightElement;
-    this.backgroundColorElement = backgroundColorElement;
 
-    this.element = document.createElement(nameElement);
-    this.element.style.width = widthElement + "px";
-    this.element.style.height = heightElement + "px";
-    this.element.style.backgroundColor = backgroundColorElement;
+  }, false);
+
+
+
+
+
+
+
+  let elementes = ["span", "p", "li", "h1", "h2", "h3", "h4", "h5", "h6", "a"];
+
+
+  //-----------------------------------------------------------------------------------------------------------------------//
+
+  let targetNode = document.querySelector("body");
+  let config = {
+
+    attributes: false,
+    childList: true,
+    subtree: true
+
+  };
+
+
+
+  let callback = (mutationsList, observer) => {
+
+
+
+
+    for (let mutation of mutationsList) {
+
+
+      if (mutation.addedNodes) {
+
+
+
+        observer.disconnect();
+
+        setTimeout(() => {
+
+          for (let e = 0; e < elementes.length; e++) {
+
+            let shito = document.body.getElementsByTagName(elementes[e]);
+
+            for (let i = 0; i < shito.length; i++) {
+
+              Interobserver.observe(shito[i]);
+
+            }
+
+          }
+
+          observer.observe(targetNode, config);
+
+
+        }, 500);
+
+      }
+
+    }
+
+    let selectingHighlightMarks = document.querySelectorAll(".tooltip");
+
+
+    chrome.storage.local.get((data) => {
+
+      addTitleMarks(selectingHighlightMarks, data.testNumber2);
+
+    });
+
+
+  };
+
+
+
+
+
+  let observerMutation = new MutationObserver(callback);
+
+
+  observerMutation.observe(targetNode, config);
+
+
+
+});
+
+
+
+
+
+var Element = function (nameElement, widthElement, heightElement, backgroundColorElement) {
+  this.nameElement = nameElement;
+  this.widthElement = widthElement;
+  this.heightElement = heightElement;
+  this.backgroundColorElement = backgroundColorElement;
+
+  this.element = document.createElement(nameElement);
+  this.element.style.width = widthElement + "px";
+  this.element.style.height = heightElement + "px";
+  this.element.style.backgroundColor = backgroundColorElement;
 
 }
 
@@ -279,11 +279,11 @@ let shadowElement = new Element("div");
 shadowElement.element.className = "ShadowElement";
 shadowElement.element.setAttribute("id", "ShadowElement");
 /* shadowElement.element.style.display = "none"; */
-/* let root = shadowElement.element.createShadowRoot();    */         
+/* let root = shadowElement.element.createShadowRoot();    */
 
-let root = shadowElement.element.attachShadow({mode: 'open'});
+let root = shadowElement.element.attachShadow({ mode: 'open' });
 
-document.body.appendChild(shadowElement.element);  
+document.body.appendChild(shadowElement.element);
 
 
 //--------------------------------------------BaseDiv -----------------------------------------------------////#endregion
@@ -508,12 +508,12 @@ spanXElement.element.textContent = "[x]";
 divBaseXElement.element.appendChild(spanXElement.element);
 
 
-spanXElement.element.addEventListener("click", function(){
-  divBaseContextMenu.element.style.display ="none"; 
-  
-  
-  
-  
+spanXElement.element.addEventListener("click", function () {
+  divBaseContextMenu.element.style.display = "none";
+
+
+
+
 });
 
 
@@ -548,51 +548,51 @@ root.appendChild(divBasePopUP.element);
 
 
 
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-  
-    if(request.checkBox === true){
-      let object = {
-        informacia: "Hola mundo",
-        otraCosa: "otramierda",
-        mensaje3: "Allo"
-      }
-      sendResponse(object);
-      return true;
-    }else if(request.checkBox === false){
-      let object2 = {
-        name: "Carlos",
-        age: 23,
-        address : "Callejon del vecindario #24"
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
-      };
-      sendResponse(object2);
-      return true;
+  if (request.checkBox === true) {
+    let object = {
+      informacia: "Hola mundo",
+      otraCosa: "otramierda",
+      mensaje3: "Allo"
     }
-    
+    sendResponse(object);
+    return true;
+  } else if (request.checkBox === false) {
+    let object2 = {
+      name: "Carlos",
+      age: 23,
+      address: "Callejon del vecindario #24"
+
+    };
+    sendResponse(object2);
+    return true;
+  }
 
 
-    if(request.greeting == "hola"){    //Bueno aquí nos quedamos, podemos envíar mensajes, pero se repiten 3 veces en la consola de contentScript 
-     console.log("hola");
-     sendResponse({mensaje: "lol"});
-     return true; 
-    } 
 
-    if (request.action == true){
-      p = document.createElement("p");
-      p.setAttribute("id", "paragraphDuplicates");
-      p.textContent = "Error: It's already stored";
-      divBaseXElement.element.appendChild(p);
-      
+  if (request.greeting == "hola") {    //Bueno aquí nos quedamos, podemos envíar mensajes, pero se repiten 3 veces en la consola de contentScript 
+    console.log("hola");
+    sendResponse({ mensaje: "lol" });
+    return true;
+  }
 
-      if(divBaseContextMenu.element.querySelectorAll("#paragraphDuplicates").length > 1){
-        divBaseXElement.element.removeChild(p);
-      }
-      sendResponse({farewell: "what"});                                                                        
-          
+  if (request.action == true) {
+    p = document.createElement("p");
+    p.setAttribute("id", "paragraphDuplicates");
+    p.textContent = "Error: It's already stored";
+    divBaseXElement.element.appendChild(p);
+
+
+    if (divBaseContextMenu.element.querySelectorAll("#paragraphDuplicates").length > 1) {
+      divBaseXElement.element.removeChild(p);
     }
-    
-    
-  });
+    sendResponse({ farewell: "what" });
+
+  }
+
+
+});
 
 
 
@@ -603,22 +603,22 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
 
 document.addEventListener('click', function (e) {
-  if(e.target !== document.querySelector(".ShadowElement")){
+  if (e.target !== document.querySelector(".ShadowElement")) {
     divBaseContextMenu.element.style.display = "none";
     // inputElement.element.value = "";
-    if(divBaseContextMenu.element.contains(p)){
+    if (divBaseContextMenu.element.contains(p)) {
       divBaseXElement.element.removeChild(p);
     }
 
     let selectCreateErrorPForTextArea = divBaseXElement.element.querySelector("#createErrorPforTextArea");
-    if(selectCreateErrorPForTextArea){
+    if (selectCreateErrorPForTextArea) {
       divBaseXElement.element.removeChild(selectCreateErrorPForTextArea);
     }
 
 
   }
 
-  
+
 
 }, false);
 
@@ -636,65 +636,74 @@ let wordsArrSelectionTexts = new Array();
 let urlSaver = new Array();
 
 
-function hasDuplicate(arr, arrPop){
-  if( new Set(arr).size !== arr.length){
+function hasDuplicate(arr, arrPop) {
+  if (new Set(arr).size !== arr.length) {
     arrPop.pop();
-  }else{
+  } else {
     return;
   }
 }
 
-function isSaveButtonPressed(evento){
+function isSaveButtonPressed(evento) {
   return evento;
 }
 
 let saveButtonBoolean = false;
 
+// function Word(id, sourceLanguage, targetLanguage) {
+//   this.id = id;
+//   this.selection = targetLanguage.toLowerCase();
+//   this.txtTranslation = sourceLanguage.toLowerCase();
+ 
+// }
 
-saveButton.element.addEventListener("click", function(e){
+
+
+saveButton.element.addEventListener("click", function (e) {
 
   console.log("El tipo de textAreaElement es : -------------->", typeof textAreaElement.element.value);
-       
-  divBaseContextMenu.element.style.display = "none";    
+
+  divBaseContextMenu.element.style.display = "none";
 
 
 
- 
-  if(divBaseXElement.element.contains(p)){                                 
-    divBaseXElement.element.removeChild(p);                                
-  }else{                                                                   
+
+  if (divBaseXElement.element.contains(p)) {
+    divBaseXElement.element.removeChild(p);
+  } else {
     console.log("No lo contiene...");
   }
 
-  saveButtonBoolean= true;
-           
+  saveButtonBoolean = true;
+
   let wordsObject = new Object();
   wordsObject.wordId = wordsArr.length + 1;
-  wordsObject.isTextSelected = mensaje;                                  
+  wordsObject.isTextSelected = mensaje;
   // wordsObject.textSelection = seleccion;
   wordsObject.textSelection = textAreaElement.element.value;
   wordsObject.UrlTextSelection = referenceUrl;
 
   wordsArr.push(wordsObject);
 
-  for(let i in wordsArr){
+  for (let i in wordsArr) {
     wordsArrSelectionTexts.push(wordsArr[i].textSelection);
   };
 
-  hasDuplicate(wordsArrSelectionTexts, wordsArr);                  
+  hasDuplicate(wordsArrSelectionTexts, wordsArr);
 
-  for(let url in wordsArr){
-    urlSaver.push(wordsArr[url].UrlTextSelection);              
-                                                                
+  for (let url in wordsArr) {
+    urlSaver.push(wordsArr[url].UrlTextSelection);
+
   }
 
   console.log(urlSaver);
 
   wordsArrSelectionTexts = [];
-  
- 
+
+
+
   // if(textAreaElement2.element.value.trim() == "" || textAreaElement.element.value.trim() == ""){
-    
+
   //   let createErrorPforTextArea = document.createElement("p");
   //   createErrorPforTextArea.setAttribute("id", "createErrorPforTextArea");
   //   createErrorPforTextArea.textContent = "Error: Fill the out all the fields...";
@@ -706,7 +715,7 @@ saveButton.element.addEventListener("click", function(e){
 
 
   // }else{
-    
+
   //   let selectCreateErrorPForTextArea = divBaseXElement.element.querySelector("#createErrorPforTextArea");
   //   if(selectCreateErrorPForTextArea){
   //     divBaseXElement.element.removeChild(selectCreateErrorPForTextArea);
@@ -714,21 +723,21 @@ saveButton.element.addEventListener("click", function(e){
   //     console.log("No existe...");
   //   }
 
-    chrome.runtime.sendMessage({greeting: true, txtSelection: textAreaElement.element.value.trim(), txtTranslation:textAreaElement2.element.value.trim(), pageUrl: referenceUrl}, function(response) {
-      
-      
-  
-  
-  
-  
-    });
-  
+  chrome.runtime.sendMessage({ greeting: true, txtSelection: textAreaElement.element.value.trim(), txtTranslation: textAreaElement2.element.value.trim(), pageUrl: referenceUrl }, function (response) {
 
 
 
-  
-  
-  
+
+
+
+  });
+
+
+
+
+
+
+
 
 
 }, false);
@@ -748,10 +757,10 @@ var refenceUrl;
 
 
 
-chrome.runtime.onMessage.addListener( function (message, sender ,sendResponse){
+chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
 
 
-  if(message.greeting == "hello"){
+  if (message.greeting == "hello") {
     console.log("recibimos...");
     sendResponse({
 
@@ -762,7 +771,7 @@ chrome.runtime.onMessage.addListener( function (message, sender ,sendResponse){
   seleccion = message.selectionText;
   mensaje = message.seleccionBool;
   referenceUrl = message.referenceUrl;
-  
+
   console.log(`
 
     Este es el mensaje: -> ${message.seleccionBool} <----- 
@@ -771,58 +780,58 @@ chrome.runtime.onMessage.addListener( function (message, sender ,sendResponse){
     TodaLainfo:         -> ${message.todalaInfo}<------
     
     `);
-  
-    
-    
-  
 
-  if(message.seleccionBool){
-    
-     
+
+
+
+
+  if (message.seleccionBool) {
+
+
     var ss = window.getSelection();
     var range = ss.getRangeAt(0);
     var oRect = range.getBoundingClientRect();
     var selectionParentNode = ss.anchorNode.parentNode;
     let selectionTextOneElement = ss.anchorNode;
-    
+
 
     var selectionFontSize = window.getComputedStyle(selectionParentNode).getPropertyValue('font-size').replace("px", "");   //We used .replace to remove the px 
-  
+
 
     // console.log("Type of -> ", typeof selectionFontSize);
-    
-    
-    
-    divBaseContextMenu.element.style.display = "block";
-    
-    
 
-    divBaseContextMenu.element.style.top = Number(pageYOffset) + Number(oRect.top) + (Number(selectionFontSize) +  5) + "px"; //Aquí me quedé calculando el tamaño de la letra 23/10/2018
+
+
+    divBaseContextMenu.element.style.display = "block";
+
+
+
+    divBaseContextMenu.element.style.top = Number(pageYOffset) + Number(oRect.top) + (Number(selectionFontSize) + 5) + "px"; //Aquí me quedé calculando el tamaño de la letra 23/10/2018
 
     let bodyClientWidth = document.body.clientWidth;
     let divBaseContextMenuWidth = divBaseContextMenu.element.style.width.replace("px", "");        //We remove the px from the width of divBaseContextMenu to do operations 
 
-    
-                                             
-    
+
+
+
     textAreaElement.element.value = ss.toString();
     textAreaElement2.element.value = "";
     // textAreaElement.element.value = message.selectionText; 
-    
 
 
 
-    if((Number(divBaseContextMenuWidth) + oRect.left) > bodyClientWidth){
+
+    if ((Number(divBaseContextMenuWidth) + oRect.left) > bodyClientWidth) {
       let operation = bodyClientWidth - divBaseContextMenuWidth;
-      divBaseContextMenu.element.style.left = operation - 5 + "px";                             
-    }else{
-      divBaseContextMenu.element.style.left = oRect.left + "px";  
+      divBaseContextMenu.element.style.left = operation - 5 + "px";
+    } else {
+      divBaseContextMenu.element.style.left = oRect.left + "px";
     }
 
-  
-  } 
-    
-} );
+
+  }
+
+});
 
 
 

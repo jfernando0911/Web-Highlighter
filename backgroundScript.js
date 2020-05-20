@@ -24,16 +24,9 @@
     
     
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
-      // console.log(tabs[0].id);
-      chrome.tabs.sendMessage(tabs[0].id, {seleccionBool: true, selectionText: info.selectionText, referenceUrl: info.pageUrl, todalaInfo: info},  function() {
-        
-          // console.log(response.farewell);                                         
-        
-      
-      });
-
+      chrome.tabs.sendMessage(tabs[0].id, {seleccionBool: true, selectionText: info.selectionText, referenceUrl: info.pageUrl, todalaInfo: info});
     });
-
+   
   };
 
     
@@ -117,7 +110,7 @@
 
               chrome.storage.local.set({testNumber2: data.testNumber2}); 
 
-             
+        
             }
 
 
@@ -127,7 +120,7 @@
 
           });
           
-
+        
          
         }                                               
           

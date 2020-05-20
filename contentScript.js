@@ -762,10 +762,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
 
   if (message.greeting == "hello") {
     console.log("recibimos...");
-    sendResponse({
-
-    });
-    return true;
+    
   }
 
   seleccion = message.selectionText;
@@ -786,7 +783,6 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
 
 
   if (message.seleccionBool) {
-
 
     var ss = window.getSelection();
     var range = ss.getRangeAt(0);
@@ -828,9 +824,10 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
       divBaseContextMenu.element.style.left = oRect.left + "px";
     }
 
-
+    
   }
 
+ 
 });
 
 

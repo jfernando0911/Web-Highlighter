@@ -654,7 +654,7 @@ let saveButtonBoolean = false;
 //   this.id = id;
 //   this.selection = targetLanguage.toLowerCase();
 //   this.txtTranslation = sourceLanguage.toLowerCase();
- 
+
 // }
 
 
@@ -760,74 +760,52 @@ var refenceUrl;
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
 
 
-  if (message.greeting == "hello") {
-    console.log("recibimos...");
-    
-  }
-
   seleccion = message.selectionText;
   mensaje = message.seleccionBool;
-  referenceUrl = message.referenceUrl;
-
-  console.log(`
-
-    Este es el mensaje: -> ${message.seleccionBool} <----- 
-    Seleccion:          -> ${message.selectionText} <-----
-    ReferenceUrl:       -> ${message.referenceUrl}<----
-    TodaLainfo:         -> ${message.todalaInfo}<------
-    
-    `);
-
-
-
+  referenceUrl = message.referenceUrl;              //Getting message, selectionbool, referenceurl from backgroundScript to send it back when save button pressed
+  
 
 
   if (message.seleccionBool) {
 
-    var ss = window.getSelection();
-    var range = ss.getRangeAt(0);
-    var oRect = range.getBoundingClientRect();
-    var selectionParentNode = ss.anchorNode.parentNode;
-    let selectionTextOneElement = ss.anchorNode;
 
-
-    var selectionFontSize = window.getComputedStyle(selectionParentNode).getPropertyValue('font-size').replace("px", "");   //We used .replace to remove the px 
-
-
-    // console.log("Type of -> ", typeof selectionFontSize);
-
-
-
-    divBaseContextMenu.element.style.display = "block";
-
-
-
-    divBaseContextMenu.element.style.top = Number(pageYOffset) + Number(oRect.top) + (Number(selectionFontSize) + 5) + "px"; //Aquí me quedé calculando el tamaño de la letra 23/10/2018
-
-    let bodyClientWidth = document.body.clientWidth;
-    let divBaseContextMenuWidth = divBaseContextMenu.element.style.width.replace("px", "");        //We remove the px from the width of divBaseContextMenu to do operations 
-
-
-
-
-    textAreaElement.element.value = ss.toString();
-    textAreaElement2.element.value = "";
-    // textAreaElement.element.value = message.selectionText; 
-
-
-
-
-    if ((Number(divBaseContextMenuWidth) + oRect.left) > bodyClientWidth) {
-      let operation = bodyClientWidth - divBaseContextMenuWidth;
-      divBaseContextMenu.element.style.left = operation - 5 + "px";
-    } else {
-      divBaseContextMenu.element.style.left = oRect.left + "px";
+    let coordenates = {
+      textSelection: window.getSelection(),
+      get range() { return this.textSelection.getRangeAt(0) },
+      get oRect() { return this.range.getBoundingClientRect() },
+      get selectionParentNode() { return this.textSelection.anchorNode.parentNode },
     }
 
-    
+    function setParameters({ textSelection, oRect, selectionParentNode }) {
+
+      let selectionFontSize = window.getComputedStyle(selectionParentNode).getPropertyValue('font-size').replace("px", "");   //We used .replace to remove the px 
+
+      divBaseContextMenu.element.style.display = "block";
+
+      divBaseContextMenu.element.style.top = Number(pageYOffset) + Number(oRect.top) + (Number(selectionFontSize) + 5) + "px"; //Aquí me quedé calculando el tamaño de la letra 23/10/2018
+
+      let bodyClientWidth = document.body.clientWidth;
+      let divBaseContextMenuWidth = divBaseContextMenu.element.style.width.replace("px", "");        //We remove the px from the width of divBaseContextMenu to do operations 
+
+      textAreaElement.element.value = textSelection.toString();
+      textAreaElement2.element.value = "";
+
+      if ((Number(divBaseContextMenuWidth) + oRect.left) > bodyClientWidth) {
+        let operation = bodyClientWidth - divBaseContextMenuWidth;
+        divBaseContextMenu.element.style.left = operation - 5 + "px";
+      }else{
+        divBaseContextMenu.element.style.left = oRect.left + "px";
+      }
+
+    }
+
+
+    setParameters(coordenates);
+
+
   }
 
- 
+
 });
 
 

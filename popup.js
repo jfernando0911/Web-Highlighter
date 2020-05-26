@@ -1,13 +1,8 @@
-/* "browser_action": {
-    //     "default_popup": "popup.html",
-    //     "default_title": "WordCollector"
-       }, */
 
 
 const li1 = document.getElementById("add-word-or-phrase");
 const li2 = document.getElementById("vocabulary");
-// const li3 = document.getElementById("options");
-// const li4 = document.getElementById("donate");
+
 
 const section1 = document.getElementById("section1-add-word-or-prhase");
 const section2 = document.getElementById("section2-vocabulary");

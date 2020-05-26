@@ -650,18 +650,12 @@ function isSaveButtonPressed(evento) {
 
 let saveButtonBoolean = false;
 
-// function Word(id, sourceLanguage, targetLanguage) {
-//   this.id = id;
-//   this.selection = targetLanguage.toLowerCase();
-//   this.txtTranslation = sourceLanguage.toLowerCase();
-
-// }
 
 
 
 saveButton.element.addEventListener("click", function (e) {
 
-  console.log("El tipo de textAreaElement es : -------------->", typeof textAreaElement.element.value);
+  // console.log("El tipo de textAreaElement es : -------------->", typeof textAreaElement.element.value);
 
   divBaseContextMenu.element.style.display = "none";
 
@@ -676,61 +670,10 @@ saveButton.element.addEventListener("click", function (e) {
 
   saveButtonBoolean = true;
 
-  let wordsObject = new Object();
-  wordsObject.wordId = wordsArr.length + 1;
-  wordsObject.isTextSelected = mensaje;
-  // wordsObject.textSelection = seleccion;
-  wordsObject.textSelection = textAreaElement.element.value;
-  wordsObject.UrlTextSelection = referenceUrl;
-
-  wordsArr.push(wordsObject);
-
-  for (let i in wordsArr) {
-    wordsArrSelectionTexts.push(wordsArr[i].textSelection);
-  };
-
-  hasDuplicate(wordsArrSelectionTexts, wordsArr);
-
-  for (let url in wordsArr) {
-    urlSaver.push(wordsArr[url].UrlTextSelection);
-
-  }
-
-  console.log(urlSaver);
-
-  wordsArrSelectionTexts = [];
+ 
 
 
-
-  // if(textAreaElement2.element.value.trim() == "" || textAreaElement.element.value.trim() == ""){
-
-  //   let createErrorPforTextArea = document.createElement("p");
-  //   createErrorPforTextArea.setAttribute("id", "createErrorPforTextArea");
-  //   createErrorPforTextArea.textContent = "Error: Fill the out all the fields...";
-  //   divBaseXElement.element.appendChild(createErrorPforTextArea);
-
-  //   if(divBaseContextMenu.element.querySelectorAll("#createErrorPforTextArea").length > 1){
-  //     divBaseXElement.element.removeChild(createErrorPforTextArea);
-  //   }
-
-
-  // }else{
-
-  //   let selectCreateErrorPForTextArea = divBaseXElement.element.querySelector("#createErrorPforTextArea");
-  //   if(selectCreateErrorPForTextArea){
-  //     divBaseXElement.element.removeChild(selectCreateErrorPForTextArea);
-  //   }else{
-  //     console.log("No existe...");
-  //   }
-
-  chrome.runtime.sendMessage({ greeting: true, txtSelection: textAreaElement.element.value.trim(), txtTranslation: textAreaElement2.element.value.trim(), pageUrl: referenceUrl }, function (response) {
-
-
-
-
-
-
-  });
+  chrome.runtime.sendMessage({ greeting: true, txtSelection: textAreaElement.element.value.trim(), txtTranslation: textAreaElement2.element.value.trim(), pageUrl: referenceUrl });
 
 
 

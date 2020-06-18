@@ -42,7 +42,7 @@ Las palabras se mercaran de color amarillo cada vez que la página sea cargada p
 5. Click on save to highlight it and stored in database
 6. Everytime you encounter the word it will be lighlighted with its respective definition, description or none because it's optional
 
-![](https://giphy.com/gifs/H7HaCJg75xHXyz0Twp)
+![](https://media.giphy.com/media/H7HaCJg75xHXyz0Twp/giphy.gif)
     
 
     

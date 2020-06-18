@@ -37,14 +37,12 @@ Las palabras se mercaran de color amarillo cada vez que la página sea cargada p
 
 1. Once installed go to any page. 
 2. Select text on any page 
-    ![](https://gyazo.com/2b60ca4f6d14e216bff896ea40760408)
 3. Right click to open the context menu and click on Highlight text: "%s"
-    ![](https://gyazo.com/1d3c41e2e3df76857f0e729fc328210d)
 4. A menu will open in which it will show the text that will be highlighted and the description or definition you wanna add
-    ![](https://gyazo.com/605617560a66fc653d73c405fd82cc29)
 5. Click on save to highlight it and stored in database
-    ![](https://gyazo.com/abe26c9b0216f9ba0907d8a586fb012d)
 6. Everytime you encounter the word it will be lighlighted with its respective definition, description or none because it's optional
 
+![](https://giphy.com/gifs/H7HaCJg75xHXyz0Twp)
     
+
     

@@ -24,6 +24,7 @@
     
     
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+      console.log(tabs);
       chrome.tabs.sendMessage(tabs[0].id, {seleccionBool: true, selectionText: info.selectionText, referenceUrl: info.pageUrl, todalaInfo: info});
     });
    
@@ -35,29 +36,7 @@
   
     chrome.runtime.onMessage.addListener(                                           
       function(request, sender, sendResponse) {                                     
-        // console.log(sender.tab ?                                                    
-        //             "from a content script:" + sender.tab.url :
-        //             "from the extension", request.greeting,
-        //             "sender qué es? ", sender.id);
-        // console.log("El botón save ha sido presionado...");                         
-        //   console.log(request.txtSelection, request.pageUrl);
-          
-          
-        //   let popUpId = "bnlgfpgjfhinbjheabmilbmjgponfdan";   
-                                                              
-          // if(sender.id == popUpId){                           
-          //   if(request.greeting == "shit"){
-          //     // console.log(`Lmao! from ${sender.id}`);
-          //     sendResponse({farewell: "saludos desde el backgroundScript"});
-              
-          //     return true;
-          //   }else if(request.otroMensaje == "holaaaa"){
-          //     sendResponse({mensajeBackground: "este es otro mensaje desde l background xd"});
-          //     return true;
-          //   }
-          // }
-
-          
+       
         if (request.greeting == true){
           
           

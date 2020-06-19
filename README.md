@@ -2,11 +2,11 @@
 
 Web higlighter is an extension for chrome that helps you highlight words, phrases or chunks of text. You can add descriptions, translation or any kind of details to the highlights. Everytime you find a word  on the web that you saved in your database it will be highlighted with their respective details, descriptions or details.
 
-# Descripcion en español
+<!-- # Descripcion en español
 
 Web highlighter es una extensión para el navegador Google Chrome que te ayuda a marcar palabras de un color y al hacer un hovering sobre la palabra marcada mostrara una descripción o significcado. Una vez seleccionada la palabra puede agregarsele una descripción. Una vez entrados los datos son guardados en una base de datos. Al ser encontrada la palabra o el conjunto de palabras, una frase, se marcaran con su respectiva descripción o significado. 
 
-Las palabras se mercaran de color amarillo cada vez que la página sea cargada por primera vez, cuando te desplaces de manera horizontal por la página o si una página es muy dinámica se desenmarcaran las palabras y volvera a buscarlas desde la base de datos.
+Las palabras se mercaran de color amarillo cada vez que la página sea cargada por primera vez, cuando te desplaces de manera horizontal por la página o si una página es muy dinámica se desenmarcaran las palabras y volvera a buscarlas desde la base de datos. -->
 
 ## Technologies used to develop this extension
 
@@ -25,12 +25,12 @@ Las palabras se mercaran de color amarillo cada vez que la página sea cargada p
 4. Select the directory or repository you downloaded
 
 
-## Pasos para instalar la extensión
+<!-- ## Pasos para instalar la extensión
 
 1. Primero descargar el repositorio
 2. Escribe chrome://extensions en el navegador de Google Chrome
 3. Cargar descomprimida
-4. Seleccionar el repositorio descargado
+4. Seleccionar el repositorio descargado -->
 
 
 ## How to use it
@@ -44,11 +44,11 @@ Las palabras se mercaran de color amarillo cada vez que la página sea cargada p
 
 ## Method 1 to highlight
 
-![](https://media.giphy.com/media/H7HaCJg75xHXyz0Twp/giphy.gif)
+    ![](https://media.giphy.com/media/H7HaCJg75xHXyz0Twp/giphy.gif)
     
 ## Method 2 to highlight 
 
-![](https://media.giphy.com/media/RLtyFFQabeC2t8mOs4/giphy.gif)
+    ![](https://media.giphy.com/media/RLtyFFQabeC2t8mOs4/giphy.gif)
 
 
 

@@ -44,11 +44,11 @@ Las palabras se mercaran de color amarillo cada vez que la página sea cargada p
 
 ## Method 1 to highlight
 
-    ![](https://media.giphy.com/media/H7HaCJg75xHXyz0Twp/giphy.gif)
+![](https://media.giphy.com/media/H7HaCJg75xHXyz0Twp/giphy.gif)
     
 ## Method 2 to highlight 
 
-    ![](https://media.giphy.com/media/RLtyFFQabeC2t8mOs4/giphy.gif)
+![](https://media.giphy.com/media/RLtyFFQabeC2t8mOs4/giphy.gif)
 
 
 

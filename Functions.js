@@ -94,6 +94,7 @@ function Word(id, sourceLanguage, targetLanguage) {
     this.id = id;
     this.selection = targetLanguage.toLowerCase();
     this.txtTranslation = sourceLanguage.toLowerCase();
+    this.referenceUrl = "No link"
    
 }
 
@@ -154,3 +155,14 @@ function pushSelectionValues(arr1, arr2){
     return {arr1};
 }
 
+function hasDuplicate(arr, arrPop) {
+  if (new Set(arr).size !== arr.length) {
+    arrPop.pop();
+  } else {
+    return;
+  }
+}
+
+function isSaveButtonPressed(evento) {
+  return evento;
+}

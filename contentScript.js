@@ -207,11 +207,11 @@ chrome.storage.local.get("testNumber2", function (data) {
 
           for (let e = 0; e < elementes.length; e++) {
 
-            let shito = document.body.getElementsByTagName(elementes[e]);
+            let targetElements = document.body.getElementsByTagName(elementes[e]);
 
-            for (let i = 0; i < shito.length; i++) {
+            for (let i = 0; i < targetElements.length; i++) {
 
-              Interobserver.observe(shito[i]);
+              Interobserver.observe(targetElements[i]);
 
             }
 

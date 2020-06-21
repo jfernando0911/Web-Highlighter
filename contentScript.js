@@ -549,21 +549,6 @@ root.appendChild(divBasePopUP.element);
 
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  if (request.checkBox === true) {
-    sendResponse(object);
-    return true;
-  } else if (request.checkBox === false) {
-    let object2 = {
-      name: "Carlos",
-      age: 23,
-      address: "Callejon del vecindario #24"
-
-    };
-    sendResponse(object2);
-    return true;
-  }
-
-
 
   if (request.greeting == "hola") {    //Bueno aquí nos quedamos, podemos envíar mensajes, pero se repiten 3 veces en la consola de contentScript 
     console.log("hola");

@@ -549,13 +549,7 @@ root.appendChild(divBasePopUP.element);
 
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-
   if (request.checkBox === true) {
-    let object = {
-      informacia: "Hola mundo",
-      otraCosa: "otramierda",
-      mensaje3: "Allo"
-    }
     sendResponse(object);
     return true;
   } else if (request.checkBox === false) {

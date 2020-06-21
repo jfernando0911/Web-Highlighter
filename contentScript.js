@@ -604,25 +604,6 @@ document.addEventListener('click', function (e) {
 
 
 
-let wordsArr = new Array();
-let wordsArrSelectionTexts = new Array();
-let urlSaver = new Array();
-
-
-function hasDuplicate(arr, arrPop) {
-  if (new Set(arr).size !== arr.length) {
-    arrPop.pop();
-  } else {
-    return;
-  }
-}
-
-function isSaveButtonPressed(evento) {
-  return evento;
-}
-
-let saveButtonBoolean = false;
-
 
 
 
@@ -641,12 +622,17 @@ saveButton.element.addEventListener("click", function (e) {
     console.log("No lo contiene...");
   }
 
-  saveButtonBoolean = true;
+
 
  
 
 
-  chrome.runtime.sendMessage({ greeting: true, txtSelection: textAreaElement.element.value.trim(), txtTranslation: textAreaElement2.element.value.trim(), pageUrl: referenceUrl });
+  chrome.runtime.sendMessage({ 
+    greeting: true, 
+    txtSelection: textAreaElement.element.value.trim(), 
+    txtTranslation: textAreaElement2.element.value.trim(), 
+    pageUrl: referenceUrl 
+  });
 
 
 

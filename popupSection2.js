@@ -28,7 +28,7 @@ chrome.storage.local.get("testNumber2", function(data){
                
                 for(let i = 0; i <= Object.keys(tr).length; i++){
                     //  
-                    // console.log("--------------------------->", i);
+                    console.log("--------------------------->", i); //Si solo hay 4 campos, ponemos x , sino no ponemos nada ese es el error.
 
                     if(i === 0){
                         // console.log("En el uno");
@@ -38,13 +38,15 @@ chrome.storage.local.get("testNumber2", function(data){
                     }else if( i === 1){
                         let createTd = document.createElement("td"); 
                         // console.log("En el dos");
-                        createTd.textContent = tr.txtTranslation;
-                        createTr.appendChild(createTd);
-                    }else if( i === 2){
-                        let createTd = document.createElement("td");
                         createTd.textContent = tr.selection;
                         createTr.appendChild(createTd);
+                    }else if( i === 2){
+                        //console.log("En el tres");
+                        let createTd = document.createElement("td");
+                        createTd.textContent = tr.txtTranslation;
+                        createTr.appendChild(createTd);
                     }else if (i == 3){
+                        //console.log("En el cuatro")
                         let createTd = document.createElement("td");
                         let createLink = document.createElement("a");
                         let urlFindingRegexExp = /https|http/gi;
@@ -59,7 +61,8 @@ chrome.storage.local.get("testNumber2", function(data){
                                 createLink.setAttribute("target", "_blank");
                                 createTd.appendChild(createLink);
                             }else{
-                                createLink.textContent = tr.referenceUrl;
+
+                                createLink.textContent = "No link";
                                 createTd.appendChild(createLink);
                                 // console.log("No es verdad...");
                             }

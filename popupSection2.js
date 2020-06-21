@@ -6,9 +6,6 @@
 // // let convertedTo = Array.from(selectingTable);
 // console.log(selectTable);
 
-// for(yikes of converting){
-//     console.log(yikes);
-// }
 
 chrome.storage.local.get("testNumber2", function(data){
     // console.log(data.testNumber2);
@@ -297,85 +294,3 @@ chrome.storage.local.get("testNumber2", function(data){
     table.DownloadVocabulary();
 
 });
-
-// function handleEvent(e){
-//     console.log("hola mundo");
-// }
-
-
-// for(let i = 0; i < selectTable.length; i++){
-//     console.log(selectTable[i]);
-
-// }
-// for (var row in selectingTable) {
-//     // row.addEventListener('click', handleEvent); 
-//     console.log(row);
-//     // or attachEvent, depends on browser
-//   }
-
-// let selectTable = document.getElementById("table-words").rows[0];
-// console.log(selectTable);
-// selectTable[0].rows.addEventListener("mouseover",(e)=>{
-//     console.log("EVENT");
-//     if(e){
-//         e.target;
-//         // for(let i = 0 ; i < e.target.length; i++){
-//         //     console.log(i);
-//         // }
-        
-//     }
-// });
-
-
-// let Table = {
-
-//     td: [],
-//     insertTd: function(id, source_language, target_language, reference){
-//         this.td.push({id, source_language, target_language, reference});
-        
-//     },
-//     displayInsertedTd: function(){
-//         console.log(this.td);    //Aquí nos quedamos, tratar de hacer el código bien e insertar en un elemento html. 28/03/2019
-//     }
-//     //Aquí nos quedamos, 29/03/2019 -> Tenemos que crear un tr y meter td, después crear otro tr y así sucesivamente...
-    
-
-
-
-// }
-
-// chrome.storage.local.get('testNumber2', function(data){
-
-//     console.log("Sección 2 -> ", data.testNumber2);
-
-//     let getTableContainer = document.getElementById("table-words");
-//     let createTr = document.createElement("tr");
-//     let createTd = document.createElement("td");
-
-//     getTableContainer.appendChild(createTr);
-//     createTd.textContent ="lol";
-//     createTr.appendChild(createTd);
-
-    
-//     //     id: 0
-//     // referenceUrl: ""
-//     // selection: "inspiration"
-//     // txtTranslation: "inspiración"
-
-    
-
-//     console.log("Can you help me see->",getTableContainer);
-
-//     for(let e of data.testNumber2){
-//         // console.log(e);
-//         // console.log(e.txtTranslation);
-//         Table.insertTd(e.id, e.txtTranslation, e.selection, e.referenceUrl);
-
-        
-//     }   //Aquí nos quedamos, 23/03/2019. Poner todos los datos en una tabla.https://www.w3schools.com/howto/howto_js_filter_table.asp <- este link nos
-//     // va a ayudar a filtar una tabla.
-
-//     Table.displayInsertedTd();
-//     console.log("------------------");
-//     Table.createTD();
-// });

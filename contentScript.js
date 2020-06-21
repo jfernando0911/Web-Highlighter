@@ -550,12 +550,6 @@ root.appendChild(divBasePopUP.element);
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
-  if (request.greeting == "hola") {    //Bueno aquí nos quedamos, podemos envíar mensajes, pero se repiten 3 veces en la consola de contentScript 
-    console.log("hola");
-    sendResponse({ mensaje: "lol" });
-    return true;
-  }
-
   if (request.action == true) {
     p = document.createElement("p");
     p.setAttribute("id", "paragraphDuplicates");

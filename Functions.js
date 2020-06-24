@@ -35,6 +35,14 @@ function hasDuplicate(arr, arrPop){
     }
   }
 
+  function Cordenates(){
+    this.textSelection = window.getSelection();
+    this.range = this.textSelection.getRangeAt(0);
+    this.oRect = this.range.getBoundingClientRect();
+    this.selectionParentNode = this.textSelection.anchorNode.parentNode;
+
+  }
+
 
 function isArrayEmpty( arr ){
     if (typeof arr !== 'undefined' && arr.length > 0) {

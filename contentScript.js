@@ -671,16 +671,17 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
   if (message.seleccionBool) {
 
 
-    let coordenates = {
-      textSelection: window.getSelection(),
-      get range() { return this.textSelection.getRangeAt(0) },
-      get oRect() { return this.range.getBoundingClientRect() },
-      get selectionParentNode() { return this.textSelection.anchorNode.parentNode },
-    }
+    let selectionCordenates = new Cordenates();
+  
+    //console.log(selectionCordenates);
+
+
 
     function setParameters({ textSelection, oRect, selectionParentNode }) {
 
       let selectionFontSize = window.getComputedStyle(selectionParentNode).getPropertyValue('font-size').replace("px", "");   //We used .replace to remove the px 
+
+      console.log(selectionFontSize)
 
       divBaseContextMenu.element.style.display = "block";
 
@@ -702,7 +703,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     }
 
 
-    setParameters(coordenates);
+    setParameters(selectionCordenates);
 
 
   }

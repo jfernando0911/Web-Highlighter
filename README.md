@@ -2,6 +2,9 @@
 
 Web higlighter is an extension for chrome that helps you highlight words, phrases or chunks of text. You can add descriptions, translation or any kind of details to the highlights. Everytime you find a word  on the web that you saved in your database it will be highlighted with their respective details, descriptions or details.
 
+[Live Demo](https://www.google.com)
+
+
 <!-- # Descripcion en español
 
 Web highlighter es una extensión para el navegador Google Chrome que te ayuda a marcar palabras de un color y al hacer un hovering sobre la palabra marcada mostrara una descripción o significcado. Una vez seleccionada la palabra puede agregarsele una descripción. Una vez entrados los datos son guardados en una base de datos. Al ser encontrada la palabra o el conjunto de palabras, una frase, se marcaran con su respectiva descripción o significado. 
